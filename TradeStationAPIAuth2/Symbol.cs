@@ -17,12 +17,12 @@ namespace TradeStationAPIAuth2
         public string IndustryCode { get; set; }
         public string IndustryName { get; set; }
         public int LotSize { get; set; }
-        public float MinMove { get; set; }
+        public double MinMove { get; set; }
         public string Name { get; set; }
         public string OptionType { get; set; }
         public int PointValue { get; set; }
         public string Root { get; set; }
         public string SectorName { get; set; }
-        public int StrikePrice { get; set; }
+        public double StrikePrice { get; set; }
     }
 }

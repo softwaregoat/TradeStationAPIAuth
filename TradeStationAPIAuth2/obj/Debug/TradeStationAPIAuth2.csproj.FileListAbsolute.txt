@@ -8,3 +8,13 @@ D:\Project\VisualStudio\CSharp\TradeStationAPIAuth2\TradeStationAPIAuth2\obj\Deb
 D:\Project\VisualStudio\CSharp\TradeStationAPIAuth2\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.exe
 D:\Project\VisualStudio\CSharp\TradeStationAPIAuth2\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.pdb
 D:\Project\VisualStudio\CSharp\TradeStationAPIAuth2\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.csprojAssemblyReference.cache
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\bin\Debug\TradeStationAPIAuth2.exe.config
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\bin\Debug\TradeStationAPIAuth2.exe
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\bin\Debug\TradeStationAPIAuth2.pdb
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.Form1.resources
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.Properties.Resources.resources
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.csproj.GenerateResource.cache
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.csproj.CoreCompileInputs.cache
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.exe
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.pdb
+D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\obj\Debug\TradeStationAPIAuth2.csprojAssemblyReference.cache

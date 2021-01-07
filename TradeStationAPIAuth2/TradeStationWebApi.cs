@@ -17,7 +17,7 @@ namespace TradeStationAPIAuth2
         private string Host { get; set; }
         private string RedirectUri { get; set; }
         private AccessToken Token { get; set; }
-
+        string path = Directory.GetParent(Application.ExecutablePath).ToString();
         public TradeStationWebApi(string key, string secret, string host, string redirecturi)
         {
             this.Key = key;
@@ -31,23 +31,38 @@ namespace TradeStationAPIAuth2
             // these two lines are only needed if .net 4.5 is not installed
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.DefaultConnectionLimit = 9999;
-            var path = Directory.GetParent(Application.ExecutablePath);
+            
             string refresh_token = "";
             try
             {
                 refresh_token = System.IO.File.ReadAllText(path + "\\RefreshToken.txt");
                 this.Token = GetAccessToken(refresh_token, "");
             }
-            catch
+            catch(Exception ex)
             {
-
+                ErrorLog(ex);
             }
             if (refresh_token == "")
             {
                 this.Token = GetAccessToken(GetAuthorizationCode());
                 System.IO.File.WriteAllText(path + "\\RefreshToken.txt", this.Token.refresh_token);
             }
-            System.IO.File.WriteAllText(path + "\\Token.txt", this.Token.access_token);
+            try
+            {
+                if (this.Token != null)
+                {
+                    System.IO.File.WriteAllText(path + "\\Token.txt", this.Token.access_token);
+                }
+                else
+                {
+                    MessageBox.Show("Please check API credential");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex);
+            }
         }
 
         private string GetAuthorizationCode()
@@ -57,7 +72,8 @@ namespace TradeStationAPIAuth2
                         "authorize?client_id={0}&response_type=code&redirect_uri={1}",
                         this.Key,
                         "http://localhost:1125/"));
-            MessageBox.Show("Open Auth Url in your browser : " + url);
+            System.IO.File.WriteAllText(path + "\\AuthUrl.txt", url);
+            MessageBox.Show("Open Auth Url in your browser from AuthUrl.txt file");
             using (var listener = new HttpListener())
             {
                 listener.Prefixes.Add(this.RedirectUri);
@@ -106,7 +122,7 @@ namespace TradeStationAPIAuth2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorLog(ex);
                 return null;
             }
         }
@@ -137,7 +153,7 @@ namespace TradeStationAPIAuth2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorLog(ex);
                 return null;
             }
         }
@@ -157,7 +173,24 @@ namespace TradeStationAPIAuth2
             readStream.Close();
             return deserializaed;
         }
+        internal IEnumerable<Quote> GetQuote(string symbols)
+        {
+            var resourceUri = new Uri(string.Format("{0}/data/quote/{1}?access_token={2}", this.Host,
+                symbols, this.Token.access_token));
 
+            var request = WebRequest.Create(resourceUri) as HttpWebRequest;
+            request.Method = "GET";
+
+            try
+            {
+                return GetDeserializedResponse<IEnumerable<Quote>>(request);
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex);
+                return null;
+            }
+        }
         internal IEnumerable<Symbol> SymbolSuggest(string suggestText)
         {
             var resourceUri = new Uri(string.Format("{0}/{1}/{2}?access_token={3}", this.Host, "data/symbols/suggest", suggestText, this.Token.access_token));
@@ -171,15 +204,15 @@ namespace TradeStationAPIAuth2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorLog(ex);
                 return null;
             }
         }
-        internal IEnumerable<BarChart> GetBarChart(string symbol, string interval, string unit, string barsBack, string endDate)
+        internal IEnumerable<BarChart> GetBarChart(string symbol, string interval, string unit, string barsBack, string endDate, string SessionTemplate)
         {
             var resourceUri =
-                new Uri(string.Format("{0}/stream/barchart/{1}/{2}/{3}/{4}/{5}?SessionTemplate=USEQPreAndPost&access_token={6}"
-                , this.Host, symbol, interval, unit, barsBack, endDate, this.Token.access_token));
+                new Uri(string.Format("{0}/stream/barchart/{1}/{2}/{3}/{4}/{5}?SessionTemplate={6}&access_token={7}"
+                , this.Host, symbol, interval, unit, barsBack, endDate, SessionTemplate, this.Token.access_token));
 
             var request = WebRequest.Create(resourceUri) as HttpWebRequest;
             request.Accept = "application/vnd.tradestation.streams+json";
@@ -202,7 +235,97 @@ namespace TradeStationAPIAuth2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorLog(ex);
+                return null;
+            }
+        }
+        internal IEnumerable<BarChart> GetBarChartStartingOnDate(string symbol, string interval, string unit, string StartDate, string SessionTemplate)
+        {
+            var resourceUri =
+                new Uri(string.Format("{0}/stream/barchart/{1}/{2}/{3}/{4}?SessionTemplate={5}&access_token={6}"
+                , this.Host, symbol, interval, unit, StartDate, SessionTemplate, this.Token.access_token));
+            var request = WebRequest.Create(resourceUri) as HttpWebRequest;
+            request.Accept = "application/vnd.tradestation.streams+json";
+            request.Method = "GET";
+
+            try
+            {
+                var response = request.GetResponse() as HttpWebResponse;
+                var receiveStream = response.GetResponseStream();
+                var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                var ser = new JavaScriptSerializer();
+                var json = readStream.ReadToEnd();
+                var scrubbedJson = json.Replace("END", "").Trim(); // hack
+                scrubbedJson = scrubbedJson.Replace("{\"Close\"", ",{\"Close\"") + "]";
+                scrubbedJson = '[' + scrubbedJson.Remove(0, 1);
+                var deserializaed = ser.Deserialize<IEnumerable<BarChart>>(scrubbedJson);
+                response.Close();
+                readStream.Close();
+                return deserializaed;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex);
+                return null;
+            }
+        }
+        internal IEnumerable<BarChart> GetBarChartDateRange(string symbol, string interval, string unit, string StartDate, string EndDate, string SessionTemplate)
+        {
+            var resourceUri =
+                new Uri(string.Format("{0}/stream/barchart/{1}/{2}/{3}/{4}/{5}?SessionTemplate={6}&access_token={7}"
+                , this.Host, symbol, interval, unit, StartDate, EndDate, SessionTemplate, this.Token.access_token));
+            var request = WebRequest.Create(resourceUri) as HttpWebRequest;
+            request.Accept = "application/vnd.tradestation.streams+json";
+            request.Method = "GET";
+
+            try
+            {
+                var response = request.GetResponse() as HttpWebResponse;
+                var receiveStream = response.GetResponseStream();
+                var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                var ser = new JavaScriptSerializer();
+                var json = readStream.ReadToEnd();
+                var scrubbedJson = json.Replace("END", "").Trim(); // hack
+                scrubbedJson = scrubbedJson.Replace("{\"Close\"", ",{\"Close\"") + "]";
+                scrubbedJson = '[' + scrubbedJson.Remove(0, 1);
+                var deserializaed = ser.Deserialize<IEnumerable<BarChart>>(scrubbedJson);
+                response.Close();
+                readStream.Close();
+                return deserializaed;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex);
+                return null;
+            }
+        }
+        internal IEnumerable<BarChart> GetBarChartDaysBack(string symbol, string interval, string unit, string SessionTemplate, string daysBack, string lastDate)
+        {
+            var resourceUri =
+                new Uri(string.Format("{0}/stream/barchart/{1}/{2}/{3}?SessionTemplate={4}&daysBack={5}&lastDate={6}&access_token={7}"
+                , this.Host, symbol, interval, unit, SessionTemplate, daysBack, lastDate, this.Token.access_token));
+            var request = WebRequest.Create(resourceUri) as HttpWebRequest;
+            request.Accept = "application/vnd.tradestation.streams+json";
+            request.Method = "GET";
+
+            try
+            {
+                var response = request.GetResponse() as HttpWebResponse;
+                var receiveStream = response.GetResponseStream();
+                var readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                var ser = new JavaScriptSerializer();
+                var json = readStream.ReadToEnd();
+                var scrubbedJson = json.Replace("END", "").Trim(); // hack
+                scrubbedJson = scrubbedJson.Replace("{\"Close\"", ",{\"Close\"") + "]";
+                scrubbedJson = '[' + scrubbedJson.Remove(0, 1);
+                var deserializaed = ser.Deserialize<IEnumerable<BarChart>>(scrubbedJson);
+                response.Close();
+                readStream.Close();
+                return deserializaed;
+            }
+            catch (Exception ex)
+            {
+                ErrorLog(ex);
                 return null;
             }
         }
@@ -220,8 +343,27 @@ namespace TradeStationAPIAuth2
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorLog(ex);
                 return null;
+            }
+        }
+        private void ErrorLog(Exception ex)
+        {
+            string logfile = path + "\\errorlog.txt";
+            if (!File.Exists(logfile))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(logfile))
+                {
+                    sw.WriteLine(ex.ToString());
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(logfile))
+                {
+                    sw.WriteLine(ex.ToString());
+                }
             }
         }
     }

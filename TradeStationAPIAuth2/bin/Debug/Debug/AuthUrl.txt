@@ -1,0 +1,1 @@
+https://api.tradestation.com/v2/authorize?client_id=C35A2A4C-F628-4CC1-8757-E2EA8798D1FE&response_type=code&redirect_uri=http://localhost:1125/

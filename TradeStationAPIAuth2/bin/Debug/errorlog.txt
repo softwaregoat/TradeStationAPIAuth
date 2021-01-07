@@ -1,0 +1,77 @@
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 148
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 137
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 155
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 144
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 155
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 144
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TradeStationAPIAuth2.TradeStationWebApi..ctor(String key, String secret, String host, String redirecturi) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 52
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 155
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 144
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 155
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 144
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 68
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 88
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TradeStationAPIAuth2.Form1.button8_Click(Object sender, EventArgs e) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 613
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetBarChartStartingOnDate(String symbol, String interval, String unit, String StartDate, String SessionTemplate) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 253
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetBarChartStartingOnDate(String symbol, String interval, String unit, String StartDate, String SessionTemplate) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 253
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetBarChartDateRange(String symbol, String interval, String unit, String StartDate, String EndDate, String SessionTemplate) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 283
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at TradeStationAPIAuth2.TradeStationWebApi.GetDeserializedResponse[T](WebRequest request) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 163
+   at TradeStationAPIAuth2.TradeStationWebApi.GetAccessToken(String refresh_token, String refresh) in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\TradeStationWebApi.cs:line 152
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at TradeStationAPIAuth2.Form1..ctor() in D:\Project\VisualStudio\CSharp\TradeStationAPIAuth\TradeStationAPIAuth2\Form1.cs:line 89
